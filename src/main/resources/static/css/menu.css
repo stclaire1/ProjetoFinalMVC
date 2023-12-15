@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* define três linhas: header, main e footer */
+    min-height: 100vh;
+}
+
+header, main, footer {
+    width: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #18837f;
+    background-color: #d1f0f0;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px 200px;
+}
+
+header p, a {
+    cursor: pointer;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header a:visited, header a:active {
+    color: #18837f;
+}
+
+.message {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    color: green;
+    font-style: italic;
+    text-align: center;
+}
+
+.erro {
+    color: red;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-weight: lighter;
+}
+
+h1, h2 {
+    color: #18837f;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+
+    margin-top: 30px;
+}
+
+.menu div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 350px;
+    text-align: center;
+    transition: all .3s;
+    color: #3b3b3b;
+}
+
+.menu div:nth-child(2){
+    margin: 0px 35px;
+}
+
+.menu div:hover {
+    scale: 1.1;
+    cursor: default;
+}
+
+.menu div:hover .child {
+    filter: invert(39%) sepia(69%) saturate(448%) hue-rotate(129deg) brightness(94%) contrast(96%);
+}
+
+.menu p {
+    margin-bottom: 10px;
+}
+
+.menu img {
+    filter: invert(21%) sepia(0%) saturate(1567%) hue-rotate(262deg) brightness(89%) contrast(87%);
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 7px;
+    border: none;
+    border-radius: 7px;
+    background-color: #d1f0f0;
+    color: #0e6461;
+    font-size: 16px;
+    transition: all .3s;
+}
+
+.menu > div:hover a {
+    background-color: #cccccc;
+    color: black;
+    cursor: pointer;
+}
+
+.menu > div:hover a:active {
+    background-color: #8f8f8f;
+}
+
+.menu > div p:nth-of-type(1) {
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.menu > div p:nth-of-type(2) {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #727272;
+}
+
+footer{
+    background-color: #d1f0f0;
+    text-align: center;
+    padding: 7px;
+    color: #727272;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: auto;
+}

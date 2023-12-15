@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/listaLivros.css}">
+    <title>Livros</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/menu}">Oráculo</a>
+        <p>Sair</p>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Autor</th>
+                    <th>Disponibilidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${livros}" class="row">
+                    <td class="name" th:text="${livro.nome_livro}"></td>
+                    <td class="position" th:text="${livro.autor}"></td>
+                    <td th:text="${livro.disponibilidade}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p class="copyright">© 2023 - Oráculo</p>
+    </footer>
+</body>
+</html>

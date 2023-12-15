@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+
+    <title>Página Inicial</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/menu}">Oráculo</a>
+        <a href="/login/sair"><p>Sair</p></a>
+    </header>
+    <main>
+        <p class="message" th:if="${successMessage}" th:text="${successMessage}"></p>
+        <p class="message" th:if="${successMessageAddLivro}" th:text="${successMessageAddLivro}"></p>
+        <p class="message erro" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+        <div class="menu-container">
+            <h1>Oráculo - Biblioteca Virtual</h1>
+            <h2>Seja bem-vindo(a)!</h2>
+            <div class="menu">
+                <div>
+                    <img th:src="@{/img/booklist.svg}" width="100px" class="child">
+                    <p class="child">Lista de Livros</p>
+                    <p class="child">Aqui você pode checar a lista de livros e a sua disponibilidade!</p>
+                    <a th:href="@{/livros}">Ir para página</a>
+                </div>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <div>
+                    <img th:src="@{/img/add.svg}" width="100px" class="child">
+                    <p class="child">Cadastrar Novo Livro</p>
+                    <p class="child">Aqui você consegue adicionar novos livros à lista!</p>
+                    <a th:href="@{/cadastroLivro}">Ir para página</a>
+                </div>
+            </div>
+                <div>
+                    <img th:src="@{/img/coop.svg}" width="100px" class="child">
+                    <p class="child">Realizar Novo Empréstimo</p>
+                    <p class="child">Aqui você consegue solicitar um novo empréstimo de livro!</p>
+                    <a th:href="@{/emprestimo}">Ir para página</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="copyright">© 2023 - Oráculo</p>
+    </footer>
+    <script>
+        setTimeout(function() {
+            var messages = document.getElementsByClassName('message');
+            for (var i = 0; i < messages.length; i++) {
+                messages[i].style.opacity = '0';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

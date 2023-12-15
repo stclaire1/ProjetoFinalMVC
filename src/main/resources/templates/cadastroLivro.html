@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9005c79a46.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/cadastroLivro.css}">
+    <title>Cadastrar Livro</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/menu}">Oráculo</a>
+        <p>Sair</p>
+    </header>
+    <main>
+        <div class="container">
+            <div class="cadastro-form">
+                <h1>Cadastrar Novo Livro</h1>
+                <form method="POST" th:action="@{/cadastroLivro}" id="livroForm">
+                    <label for="nome">Nome de livro:</label>
+                    <span><input type="text" id="livro" name="nome_livro" required><i class="fa-solid fa-book"></i></span>
+                    <label for="autor">Autor:</label>
+                    <span><input type="text" id="autor" name="autor" required><i class="fa-solid fa-at"></i></span>
+                    <label for="disp">Disponibilidade:</label>
+                    <select name="disponibilidade" id="disponibilidade">
+                        <option value="Disponivel">Disponivel</option>
+                    </select>
+
+                    <label for="un">Unidade de entrada do livro:</label>
+                    <select name="un" id="un">
+                        <option disabled selected>Selecione</option>
+                        <option value="udi_centro">Unidade Udi Centro</option>
+                        <option value="rural">Unidade Rural</option>
+                        <option value="uberaba">Unidade Uberaba</option>
+                    </select>
+                    <button type="submit" id="btnCadastrar">Cadastrar</button>
+                    <a th:href="@{/menu}">Cancelar cadastro</a>
+                </form>
+            </div>
+    </main>
+    <footer>
+        <p class="copyright">© 2023 - Oráculo</p>
+    </footer>
+</body>
+</html>

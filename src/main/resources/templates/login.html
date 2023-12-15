@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9005c79a46.js" crossorigin="anonymous"></script>
+	<link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Login</title>
+</head>
+<body>
+	<div class="container">
+        <h1>Seja bem-vindo(a) de volta!</h1>
+		<div class="login-form">
+			<h2>Login</h2>
+			<form method="POST" action="/login">
+				<label for="username">Nome de usuário:</label>
+				<span><input type="text" id="nome_usuario" name="nome_usuario"  required><i class="fa-solid fa-user"></i></span>
+				<label for="password">Senha:</label>
+				<span><input type="password" id="senha" name="senha" required><i class="fa-solid fa-lock"></i></span>
+				<button type="submit">Entrar</button>
+			</form>
+			<div th:if="${errorMessage}" class="error-message" style="color: red">
+                <p th:text="${errorMessage}"></p>
+            </div>
+			<div class="links">
+				<a th:href="@{/cadastro}">Ainda não possui cadastro? Clique aqui!</a>
+			</div>
+            <p class="copyright">© 2023 - Oráculo</p>
+		</div>
+	</div>
+    <script th:src="@{/js/login.js}"></script>
+</body>
+
+</html>

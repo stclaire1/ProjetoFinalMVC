@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/emprestimo.css}">
+    <title>Empréstimo</title>
+</head>
+<body>
+    <header>
+        <a th:href="@{/menu}">Oráculo</a>
+        <p>Sair</p>
+    </header>
+    <main>
+        <div class="titulos">
+            <h2>Solicitar novo empréstimo</h2>
+            <h3>Preencha todas as informações abaixo para solicitar um novo empréstimo:</h3>
+        </div>
+        <form action="/emprestimo" method="POST" class="emprestimo-form" th:object="${emprestimo}">
+            <label for="un"><span class="number">1.</span> Selecione a unidade para retirada do livro:</label>
+        <select name="un" id="un">
+            <option disabled selected>Selecione</option>
+            <option value="udi_centro">Unidade Udi Centro</option>
+            <option value="rural">Unidade Rural</option>
+            <option value="uberada">Unidade Uberaba</option>
+        </select>
+        <label for="livro"><span class="number">2.</span> Selecione o livro que deseja:</label>
+        <select name="id_livro" id="livro">
+            <option disabled selected>Selecione</option>
+            <option th:each="livro : ${livrosDisponiveis}" 
+                    th:value="${livro.id_livro}" 
+                    th:text="${livro.nome_livro}"></option>
+        </select>
+        <label for="retirada"><span class="number">3.</span> Selecione uma data para fazer a retirada do livro:</label>
+        <input type="date" name="data_retirada" id="retirada">
+        <label for="devolucao"><span class="number">4.</span> Selecione uma data para fazer a devolução do livro:</label>
+        <input type="date" name="data_devolucao" id="devolucao" disabled>
+        <input type="text" name="nome_usuario" hidden>
+        <input type="submit" value="Confirmar" id="btn-confirmar">
+        <a th:href="@{/menu}">Cancelar empréstimo</a>
+        </form>
+    </main>
+    <footer>
+        <p class="copyright">© 2023 - Oráculo</p>
+    </footer>
+    <script>
+        document.getElementById("retirada").min = new Date().toISOString().split("T")[0];
+        document.getElementById("retirada").addEventListener("change", function() {
+            var retiradaDate = new Date(this.value);
+            var devolucaoInput = document.getElementById("devolucao");
+            // Calcula a data de devolução após 15 dias
+            var devolucaoDate = new Date(retiradaDate);
+            devolucaoDate.setDate(devolucaoDate.getDate() + 10);
+            // Formata a data para o formato "YYYY-MM-DD"
+            var formattedDate = devolucaoDate.toISOString().split("T")[0];
+            // Define o valor mínimo do input de devolução
+            devolucaoInput.min = formattedDate;
+            devolucaoInput.disabled = false;
+        });
+    </script>
+</body>
+</html>
